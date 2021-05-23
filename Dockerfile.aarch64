@@ -1,4 +1,4 @@
-FROM balenalib/armv7hf-debian
+FROM balenalib/aarch64-debian
 
 MAINTAINER Tloxipeuhca <tloxipeuhca@gmail.com>
 
@@ -18,7 +18,7 @@ RUN apt-get update
 RUN apt-get install -y iputils-ping tar wget rsync
 RUN mkdir -p "$GF_PATHS_CONFIG_PATH" "$GF_PATHS_DATA" "$GF_PATHS_HOME" "$GF_PATHS_LOGS" "$GF_PATHS_PLUGINS" "$GF_PATHS_PROVISIONING"
 WORKDIR "$GF_PATHS_HOME"
-RUN wget https://dl.grafana.com/oss/release/grafana-7.5.7.linux-armv7.tar.gz
+RUN wget https://dl.grafana.com/oss/release/grafana-7.5.7.linux-arm64.tar.gz
 RUN tar xvzf $(ls . | grep ".tar.gz$" | head -1)
 RUN rsync -arv $(ls . | grep "^grafana" | head -1)/ .
 RUN rsync -arv ./bin/* /bin
